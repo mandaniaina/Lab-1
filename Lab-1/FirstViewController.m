@@ -7,8 +7,14 @@
 //
 
 #import "FirstViewController.h"
+#import "AppDelegate.h"
 
 @interface FirstViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *nom;
+@property (weak, nonatomic) IBOutlet UITextField *prenom;
+@property (weak, nonatomic) IBOutlet UITextField *pays;
+- (IBAction)btnAjouter:(UIButton *)sender;
+
 
 @end
 
@@ -20,10 +26,20 @@
 }
 
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 
+- (IBAction)btnAjouter:(UIButton *)sender {
+    Participant *p = [[Participant alloc]init];
+    p.Nom = _nom.text;
+    p.Prenom = _prenom.text;
+    p.Pays = _pays.text;
+    
+    DataClass *obj=[DataClass getInstance];
+    [obj.listeParticipants addObject:p];
+}
 @end

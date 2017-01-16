@@ -7,8 +7,9 @@
 //
 
 #import "SecondViewController.h"
-
+#import "AppDelegate.h"
 @interface SecondViewController ()
+- (IBAction)debutFin:(id)sender;
 
 @end
 
@@ -26,4 +27,8 @@
 }
 
 
+- (IBAction)debutFin:(id)sender {
+    DataClass *obj=[DataClass getInstance];
+    NSLog(@"%@", obj.listeParticipants);
+}
 @end
