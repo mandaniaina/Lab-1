@@ -15,7 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *nom;
 @property (weak, nonatomic) IBOutlet UITextField *prenom;
 @property (weak, nonatomic) IBOutlet UITextField *pays;
+
 - (IBAction)btnAjouter:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITextView *textview;
 
 
 @end
@@ -40,8 +42,46 @@
     p.Nom = _nom.text;
     p.Prenom = _prenom.text;
     p.Pays = _pays.text;
-    
     DataClass *obj=[DataClass getInstance];
     [obj.listeParticipants addObject:p];
+    
+    NSMutableString *people=[NSMutableString string];
+    int length = 3;
+    [people appendString:@"Nom"];
+    for (int j=length; j<40; j++)
+    {
+        [people appendString:@" "];
+    }
+    
+    length = 6;
+    [people appendString:@"Prenom"];
+    for (int j=length; j<40; j++)
+    {
+        [people appendString:@" "];
+    }
+    [people appendString:@"Pays"];
+    [people appendString:@"\n\n"];
+    for (int i=0; i < [obj.listeParticipants count]; i++) {
+        Participant* p = [obj.listeParticipants objectAtIndex:i];
+        int length = [p.Nom length];
+        [people appendString:p.Nom];
+        for (int j=length; j<40; j++)
+        {
+            [people appendString:@" "];
+        }
+        
+        length = [p.Prenom length];
+        [people appendString:p.Prenom];
+        for (int j=length; j<40; j++)
+        {
+            [people appendString:@" "];
+        }
+        
+        length = [p.Pays length];
+        [people appendString:p.Pays];
+        [people appendString:@"\n"];
+    }
+    _textview.text=people;
+    
 }
 @end
