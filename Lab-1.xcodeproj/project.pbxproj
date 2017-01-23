@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2773149A1E368F1B00548D7F /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = 277314991E368F1B00548D7F /* Participant.m */; };
 		E441909D1E2D52DC0004394F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909C1E2D52DC0004394F /* main.m */; };
 		E44190A01E2D52DC0004394F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909F1E2D52DC0004394F /* AppDelegate.m */; };
 		E44190A31E2D52DC0004394F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44190A21E2D52DC0004394F /* FirstViewController.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		277314981E368F1B00548D7F /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
+		277314991E368F1B00548D7F /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
 		E44190981E2D52DC0004394F /* Lab-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lab-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E441909C1E2D52DC0004394F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E441909E1E2D52DC0004394F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 				E44190AC1E2D52DC0004394F /* LaunchScreen.storyboard */,
 				E44190AF1E2D52DC0004394F /* Info.plist */,
 				E441909B1E2D52DC0004394F /* Supporting Files */,
+				277314981E368F1B00548D7F /* Participant.h */,
+				277314991E368F1B00548D7F /* Participant.m */,
 			);
 			path = "Lab-1";
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			files = (
 				E44190A61E2D52DC0004394F /* SecondViewController.m in Sources */,
 				E44190A01E2D52DC0004394F /* AppDelegate.m in Sources */,
+				2773149A1E368F1B00548D7F /* Participant.m in Sources */,
 				E44190A31E2D52DC0004394F /* FirstViewController.m in Sources */,
 				E441909D1E2D52DC0004394F /* main.m in Sources */,
 			);
@@ -315,6 +321,7 @@
 				E44190B41E2D52DC0004394F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

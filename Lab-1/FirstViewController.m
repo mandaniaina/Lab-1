@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "AppDelegate.h"
+#import "Participant.h"
 
 @interface FirstViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nom;
