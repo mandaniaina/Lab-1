@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2773149A1E368F1B00548D7F /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = 277314991E368F1B00548D7F /* Participant.m */; };
+		DC91CEA01E3699D200F7198D /* DataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DC91CE9F1E3699D200F7198D /* DataClass.m */; };
 		E441909D1E2D52DC0004394F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909C1E2D52DC0004394F /* main.m */; };
 		E44190A01E2D52DC0004394F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909F1E2D52DC0004394F /* AppDelegate.m */; };
 		E44190A31E2D52DC0004394F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44190A21E2D52DC0004394F /* FirstViewController.m */; };
@@ -20,6 +21,8 @@
 /* Begin PBXFileReference section */
 		277314981E368F1B00548D7F /* Participant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Participant.h; sourceTree = "<group>"; };
 		277314991E368F1B00548D7F /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
+		DC91CE9E1E3699D200F7198D /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
+		DC91CE9F1E3699D200F7198D /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
 		E44190981E2D52DC0004394F /* Lab-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lab-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E441909C1E2D52DC0004394F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E441909E1E2D52DC0004394F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				E441909B1E2D52DC0004394F /* Supporting Files */,
 				277314981E368F1B00548D7F /* Participant.h */,
 				277314991E368F1B00548D7F /* Participant.m */,
+				DC91CE9E1E3699D200F7198D /* DataClass.h */,
+				DC91CE9F1E3699D200F7198D /* DataClass.m */,
 			);
 			path = "Lab-1";
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC91CEA01E3699D200F7198D /* DataClass.m in Sources */,
 				E44190A61E2D52DC0004394F /* SecondViewController.m in Sources */,
 				E44190A01E2D52DC0004394F /* AppDelegate.m in Sources */,
 				2773149A1E368F1B00548D7F /* Participant.m in Sources */,
@@ -286,6 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Lab-1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ETS.Lab-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -297,6 +304,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Lab-1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"MTL_ENABLE_DEBUG_INFO[arch=*]" = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[sdk=iphonesimulator*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ETS.Lab-1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

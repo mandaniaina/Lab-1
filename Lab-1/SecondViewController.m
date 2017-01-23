@@ -7,7 +7,11 @@
 //
 
 #import "SecondViewController.h"
+#import "FirstViewController.h"
 #import "AppDelegate.h"
+#import "participant.h"
+#import "DataClass.h"
+
 @interface SecondViewController ()
 - (IBAction)debutFin:(id)sender;
 

@@ -6,7 +6,11 @@
 //  Copyright © 2017 Raharison, Mandaniaina. All rights reserved.
 //
 
+#import "SecondViewController.h"
+#import "FirstViewController.h"
 #import "AppDelegate.h"
+#import "participant.h"
+
 
 @interface AppDelegate ()
 

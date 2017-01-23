@@ -6,10 +6,11 @@
 //  Copyright © 2017 Raharison, Mandaniaina. All rights reserved.
 //
 
+#import "SecondViewController.h"
 #import "FirstViewController.h"
 #import "AppDelegate.h"
-#import "Participant.h"
-
+#import "participant.h"
+#import "DataClass.h"
 @interface FirstViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nom;
 @property (weak, nonatomic) IBOutlet UITextField *prenom;
