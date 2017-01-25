@@ -16,8 +16,6 @@
     NSTimer *chrono;
     NSDate *debutChrono;
     __weak IBOutlet UILabel *lbTimer;
-    __weak IBOutlet UILabel *lbPenalite;
-    int nbSecondePenalite;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -27,7 +25,7 @@
 @implementation SecondViewController
 
 - (void)viewDidLoad {
-    nbSecondePenalite = 0;
+    [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -48,24 +46,8 @@
 
 - (IBAction)penalite:(UIButton *)sender {
     
-   // DataClass *obj=[DataClass getInstance];
-    nbSecondePenalite = nbSecondePenalite + 30;
-    
-    int secondes = nbSecondePenalite % 60;
-    int minutes = (nbSecondePenalite / 60) % 60;
-    
-    if(nbSecondePenalite == 60){
-    
-         [self->lbPenalite setText: @"Disqualifié"];
-         [chrono invalidate], chrono = nil;
-    }
-    else{
-        NSString* strPenalite = [NSString stringWithFormat:@"%02d:%02d",minutes,secondes];
-        
-        [self->lbPenalite setText: [@"Pénalité:" stringByAppendingString:strPenalite]];
-    }
-    
-    /*
+    DataClass *obj=[DataClass getInstance];
+
     NSMutableString *people=[NSMutableString string];
     int length = 3;
     [people appendString:@"Nom"];
@@ -102,8 +84,7 @@
         [people appendString:p.Pays];
         [people appendString:@"\n"];
     }
-    _textview.text=people;*/
-}
+    _textview.text=people;}
 
 -(void) afficherChrono{
     
