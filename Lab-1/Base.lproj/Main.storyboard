@@ -82,7 +82,7 @@
                                 <rect key="frame" x="48" y="514" width="879" height="389"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>

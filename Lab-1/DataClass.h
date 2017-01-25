@@ -11,8 +11,9 @@
 @interface DataClass : NSObject
 {
     NSMutableArray *listeParticipants;
+    int *noMax;
 }
-
+@property(nonatomic,readwrite)int *noMax;
 @property(nonatomic,retain)NSMutableArray *listeParticipants;
 +(DataClass*)getInstance;
 @end

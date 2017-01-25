@@ -43,10 +43,18 @@
     p.Prenom = _prenom.text;
     p.Pays = _pays.text;
     DataClass *obj=[DataClass getInstance];
+    p.No = obj.noMax +1;
+    obj.noMax = obj.noMax+1;
     [obj.listeParticipants addObject:p];
     
     NSMutableString *people=[NSMutableString string];
-    int length = 3;
+    int length = 9;
+    [people appendString:@"Dossard #"];
+    for (int j=length; j<15; j++)
+    {
+        [people appendString:@" "];
+    }
+    length = 3;
     [people appendString:@"Nom"];
     for (int j=length; j<40; j++)
     {
@@ -63,7 +71,13 @@
     [people appendString:@"\n\n"];
     for (int i=0; i < [obj.listeParticipants count]; i++) {
         Participant* p = [obj.listeParticipants objectAtIndex:i];
-        int length = [p.Nom length];
+        int length = [[NSString stringWithFormat:@"%d",p.No] length];
+        [people appendString:[NSString stringWithFormat:@"%d",p.No]];
+        for (int j=length; j<15; j++)
+        {
+            [people appendString:@" "];
+        }
+        length = [p.Nom length];
         [people appendString:p.Nom];
         for (int j=length; j<40; j++)
         {
