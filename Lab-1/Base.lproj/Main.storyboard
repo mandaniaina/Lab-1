@@ -191,6 +191,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+<<<<<<< Updated upstream
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-cs-m6h">
                                 <rect key="frame" x="180" y="1068" width="667" height="241"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -202,6 +203,13 @@
                                 <rect key="frame" x="387" y="41" width="258" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
+=======
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pénalité:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qna-CM-Rhk">
+                                <rect key="frame" x="476" y="79" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+>>>>>>> Stashed changes
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -209,6 +217,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Finish Flag Filled-35.png" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="lbPenalite" destination="qna-CM-Rhk" id="W6V-YG-TSy"/>
                         <outlet property="lbTimer" destination="yDc-6B-BFA" id="pBJ-3u-llG"/>
                     </connections>
                 </viewController>
