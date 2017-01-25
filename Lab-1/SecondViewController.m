@@ -42,6 +42,7 @@
     }else{
         [chrono invalidate], chrono = nil;
         [sender setTitle:@"Départ" forState:UIControlStateNormal];
+        [self sauvegarderTemps:false];
     }
     
 }
@@ -54,10 +55,11 @@
     int secondes = nbSecondePenalite % 60;
     int minutes = (nbSecondePenalite / 60) % 60;
     
-    if(nbSecondePenalite >= 60){
+    if(nbSecondePenalite >= 90){
         
         [self->lbPenalite setText: @"Disqualifié"];
         [chrono invalidate], chrono = nil;
+        [self sauvegarderTemps:true];
     }
     else{
         NSString* strPenalite = [NSString stringWithFormat:@"%02d:%02d",minutes,secondes];
@@ -104,6 +106,12 @@
      }
      _textview.text=people;*/
 }
+- (IBAction)disqualifie:(id)sender {
+    
+    [self->lbPenalite setText: @"Disqualifié"];
+    [chrono invalidate], chrono = nil;
+    [self sauvegarderTemps:true];
+}
 
 -(void) afficherChrono{
     
@@ -132,4 +140,43 @@
     DataClass *obj=[DataClass getInstance];
     NSLog(@"%@", obj.listeParticipants);
 }
+
+- (void) sauvegarderTemps:(bool) estDisqualifie{
+    DataClass *obj=[DataClass getInstance];
+        NSDate *currentDate = [NSDate date];
+        NSTimeInterval secondeChrono = [currentDate timeIntervalSinceDate:debutChrono];
+        NSInteger tempsChrono = secondeChrono;
+        
+        
+        if(obj.participantEnCours > [obj.listeParticipants  count]){
+            obj.participantEnCours = 0;
+            obj.tourNo2 = true;
+        }
+        
+        Participant *p = obj.listeParticipants[obj.participantEnCours];
+        
+        if(!obj.tourNo2){
+            if(estDisqualifie){
+                p.TempsCourse1 = -1;
+            }else{
+                p.TempsCourse1 = &(nbSecondePenalite) + tempsChrono; //ajouter le temps du chrono
+            }
+        }else{
+            if(estDisqualifie){
+                p.TempsCourse2 = -1;
+            }else
+                p.TempsCourse2 = &(nbSecondePenalite) + tempsChrono; //ajouter temps chrono
+        }
+        
+        nbSecondePenalite = 0;
+        
+        if(obj.participantEnCours > [obj.listeParticipants  count] && obj.tourNo2 == true){
+            //ALERT fin de la compétition
+            //clear données
+            
+            
+        }
+}
+
+
 @end

@@ -12,8 +12,12 @@
 {
     NSMutableArray *listeParticipants;
     int *noMax;
+    int participantEnCours;
+    bool tourNo2;
 }
 @property(nonatomic,readwrite)int *noMax;
+@property(nonatomic,readwrite)int participantEnCours;
+@property(nonatomic,readwrite)bool tourNo2;
 @property(nonatomic,retain)NSMutableArray *listeParticipants;
 +(DataClass*)getInstance;
 @end
