@@ -88,7 +88,7 @@
                                 <rect key="frame" x="462" y="326" width="249" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91241987179487183" green="0.91241987179487183" blue="0.91241987179487183" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Ajouter le participant" image="Plus-48.png">
+                                <state key="normal" title="Ajouter le participant" image="Plus.png">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -98,7 +98,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ajouter participant" image="Add User Male-35.png" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Ajouter participant" image="Add User Male.png" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="nom" destination="Jwr-Bu-nsE" id="scp-tI-xe2"/>
                         <outlet property="pays" destination="DGw-qQ-xOr" id="cZZ-qg-WgR"/>
@@ -207,7 +207,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Finish Flag Filled-35.png" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="Finish Flag Filled.png" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="lbTimer" destination="yDc-6B-BFA" id="pBJ-3u-llG"/>
                     </connections>
@@ -237,8 +237,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add User Male-35.png" width="35" height="35"/>
-        <image name="Finish Flag Filled-35.png" width="35" height="35"/>
-        <image name="Plus-48.png" width="48" height="48"/>
+        <image name="Add User Male.png" width="25" height="25"/>
+        <image name="Finish Flag Filled.png" width="25" height="25"/>
+        <image name="Plus.png" width="25" height="25"/>
     </resources>
 </document>

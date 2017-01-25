@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		2773149A1E368F1B00548D7F /* Participant.m in Sources */ = {isa = PBXBuildFile; fileRef = 277314991E368F1B00548D7F /* Participant.m */; };
 		DC91CEA01E3699D200F7198D /* DataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = DC91CE9F1E3699D200F7198D /* DataClass.m */; };
-		DCD083451E392B290070616C /* Finish Flag Filled-35.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083441E392B290070616C /* Finish Flag Filled-35.png */; };
-		DCD083471E392B2F0070616C /* Add User Male-35.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083461E392B2F0070616C /* Add User Male-35.png */; };
-		DCD083491E392BB80070616C /* Plus-48.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083481E392BB80070616C /* Plus-48.png */; };
+		DCD083531E3939750070616C /* Plus.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083521E3939750070616C /* Plus.png */; };
+		DCD083551E39397C0070616C /* Finish Flag Filled.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083541E39397C0070616C /* Finish Flag Filled.png */; };
+		DCD083571E3939830070616C /* Add User Male.png in Resources */ = {isa = PBXBuildFile; fileRef = DCD083561E3939830070616C /* Add User Male.png */; };
 		E441909D1E2D52DC0004394F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909C1E2D52DC0004394F /* main.m */; };
 		E44190A01E2D52DC0004394F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E441909F1E2D52DC0004394F /* AppDelegate.m */; };
 		E44190A31E2D52DC0004394F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44190A21E2D52DC0004394F /* FirstViewController.m */; };
@@ -26,9 +26,9 @@
 		277314991E368F1B00548D7F /* Participant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Participant.m; sourceTree = "<group>"; };
 		DC91CE9E1E3699D200F7198D /* DataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataClass.h; sourceTree = "<group>"; };
 		DC91CE9F1E3699D200F7198D /* DataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataClass.m; sourceTree = "<group>"; };
-		DCD083441E392B290070616C /* Finish Flag Filled-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Finish Flag Filled-35.png"; path = "../../Downloads/Finish Flag Filled-35.png"; sourceTree = "<group>"; };
-		DCD083461E392B2F0070616C /* Add User Male-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Add User Male-35.png"; path = "../../Downloads/Add User Male-35.png"; sourceTree = "<group>"; };
-		DCD083481E392BB80070616C /* Plus-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Plus-48.png"; path = "../../Downloads/Plus-48.png"; sourceTree = "<group>"; };
+		DCD083521E3939750070616C /* Plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus.png; sourceTree = "<group>"; };
+		DCD083541E39397C0070616C /* Finish Flag Filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finish Flag Filled.png"; sourceTree = "<group>"; };
+		DCD083561E3939830070616C /* Add User Male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add User Male.png"; sourceTree = "<group>"; };
 		E44190981E2D52DC0004394F /* Lab-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lab-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E441909C1E2D52DC0004394F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E441909E1E2D52DC0004394F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,9 +73,9 @@
 		E441909A1E2D52DC0004394F /* Lab-1 */ = {
 			isa = PBXGroup;
 			children = (
-				DCD083481E392BB80070616C /* Plus-48.png */,
-				DCD083461E392B2F0070616C /* Add User Male-35.png */,
-				DCD083441E392B290070616C /* Finish Flag Filled-35.png */,
+				DCD083561E3939830070616C /* Add User Male.png */,
+				DCD083541E39397C0070616C /* Finish Flag Filled.png */,
+				DCD083521E3939750070616C /* Plus.png */,
 				E441909E1E2D52DC0004394F /* AppDelegate.h */,
 				E441909F1E2D52DC0004394F /* AppDelegate.m */,
 				E44190A11E2D52DC0004394F /* FirstViewController.h */,
@@ -161,12 +161,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCD083451E392B290070616C /* Finish Flag Filled-35.png in Resources */,
-				DCD083471E392B2F0070616C /* Add User Male-35.png in Resources */,
 				E44190AE1E2D52DC0004394F /* LaunchScreen.storyboard in Resources */,
 				E44190AB1E2D52DC0004394F /* Assets.xcassets in Resources */,
 				E44190A91E2D52DC0004394F /* Main.storyboard in Resources */,
-				DCD083491E392BB80070616C /* Plus-48.png in Resources */,
+				DCD083551E39397C0070616C /* Finish Flag Filled.png in Resources */,
+				DCD083531E3939750070616C /* Plus.png in Resources */,
+				DCD083571E3939830070616C /* Add User Male.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
