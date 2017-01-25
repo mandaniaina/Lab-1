@@ -16,6 +16,8 @@
     NSTimer *chrono;
     NSDate *debutChrono;
     __weak IBOutlet UILabel *lbTimer;
+    __weak IBOutlet UILabel *lbPenalite;
+    int nbSecondePenalite;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -25,14 +27,14 @@
 @implementation SecondViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    nbSecondePenalite = 0;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)timerButton:(UIButton *)sender {
     
-       if(![chrono isValid]){
-           [sender setTitle:@"Arrivée" forState:UIControlStateNormal];
+    if(![chrono isValid]){
+        [sender setTitle:@"Arrivée" forState:UIControlStateNormal];
         
         debutChrono = [NSDate date];
         chrono = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(afficherChrono) userInfo:nil repeats:YES];
@@ -46,45 +48,62 @@
 
 - (IBAction)penalite:(UIButton *)sender {
     
-    DataClass *obj=[DataClass getInstance];
-
-    NSMutableString *people=[NSMutableString string];
-    int length = 3;
-    [people appendString:@"Nom"];
-    for (int j=length; j<40; j++)
-    {
-        [people appendString:@" "];
+    // DataClass *obj=[DataClass getInstance];
+    nbSecondePenalite = nbSecondePenalite + 30;
+    
+    int secondes = nbSecondePenalite % 60;
+    int minutes = (nbSecondePenalite / 60) % 60;
+    
+    if(nbSecondePenalite >= 60){
+        
+        [self->lbPenalite setText: @"Disqualifié"];
+        [chrono invalidate], chrono = nil;
+    }
+    else{
+        NSString* strPenalite = [NSString stringWithFormat:@"%02d:%02d",minutes,secondes];
+        
+        [self->lbPenalite setText: [@"Pénalité:" stringByAppendingString:strPenalite]];
     }
     
-    length = 6;
-    [people appendString:@"Prenom"];
-    for (int j=length; j<40; j++)
-    {
-        [people appendString:@" "];
-    }
-    [people appendString:@"Pays"];
-    [people appendString:@"\n\n"];
-    for (int i=0; i < [obj.listeParticipants count]; i++) {
-        Participant* p = [obj.listeParticipants objectAtIndex:i];
-        int length = [p.Nom length];
-        [people appendString:p.Nom];
-        for (int j=length; j<40; j++)
-        {
-            [people appendString:@" "];
-        }
-        
-        length = [p.Prenom length];
-        [people appendString:p.Prenom];
-        for (int j=length; j<40; j++)
-        {
-            [people appendString:@" "];
-        }
-        
-        length = [p.Pays length];
-        [people appendString:p.Pays];
-        [people appendString:@"\n"];
-    }
-    _textview.text=people;}
+    /*
+     NSMutableString *people=[NSMutableString string];
+     int length = 3;
+     [people appendString:@"Nom"];
+     for (int j=length; j<40; j++)
+     {
+     [people appendString:@" "];
+     }
+     
+     length = 6;
+     [people appendString:@"Prenom"];
+     for (int j=length; j<40; j++)
+     {
+     [people appendString:@" "];
+     }
+     [people appendString:@"Pays"];
+     [people appendString:@"\n\n"];
+     for (int i=0; i < [obj.listeParticipants count]; i++) {
+     Participant* p = [obj.listeParticipants objectAtIndex:i];
+     int length = [p.Nom length];
+     [people appendString:p.Nom];
+     for (int j=length; j<40; j++)
+     {
+     [people appendString:@" "];
+     }
+     
+     length = [p.Prenom length];
+     [people appendString:p.Prenom];
+     for (int j=length; j<40; j++)
+     {
+     [people appendString:@" "];
+     }
+     
+     length = [p.Pays length];
+     [people appendString:p.Pays];
+     [people appendString:@"\n"];
+     }
+     _textview.text=people;*/
+}
 
 -(void) afficherChrono{
     
