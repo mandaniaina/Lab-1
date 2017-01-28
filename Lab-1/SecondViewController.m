@@ -120,13 +120,32 @@
                  [people appendString:@" "];
              }
              [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
-         [people appendString:@"\n"];
-        
-        /*for(int i =0;i<[obj.listeParticipants count];i++)
+        length = classement.length;
+        for (int j=length; j<25; j++)
         {
-            if(p.TempsCourse1)
-        }*/
+            [people appendString:@" "];
+        }
         
+        int nbrBattue=0;
+        int classementActuel=0;
+        for(int i =0;i<[obj.listeParticipants count];i++)
+        {
+            if(cpt!=0 && p.TempsCourse1< [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
+            {
+                nbrBattue++;
+                classementActuel=cpt-nbrBattue+1;
+            }
+            else if(cpt==0)
+            {
+                classementActuel=1;
+            }
+            else if(nbrBattue==0&&cpt!=0)
+            {
+                classementActuel=cpt+1;
+            }
+        }
+        [people appendString:[NSString stringWithFormat:@"#%d",classementActuel]];
+        [people appendString:@"\n"];
         
          //}
          _textview.text=people;
