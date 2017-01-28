@@ -20,7 +20,7 @@
 @property(nonatomic, readwrite) NSString *Nom;
 @property(nonatomic, readwrite) NSString *Prenom;
 @property(nonatomic, readwrite) NSString *Pays;
-@property(nonatomic, readwrite) int *TempsCourse1;
-@property(nonatomic, readwrite) int *TempsCourse2;
-@property(nonatomic, readwrite) int *No;
+@property(nonatomic, readwrite) int TempsCourse1;
+@property(nonatomic, readwrite) int TempsCourse2;
+@property(nonatomic, readwrite) int No;
 @end

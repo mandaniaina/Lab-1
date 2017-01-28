@@ -131,6 +131,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="afficherChrono" destination="8rJ-Kc-sve" eventType="touchUpInside" id="XBv-3V-UzY"/>
                                     <action selector="debutFin:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3jv-Qk-Nnk"/>
                                     <action selector="timerButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="uOx-uW-K3y"/>
                                 </connections>
@@ -180,13 +181,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TK-Hc-LYE">
-                                <rect key="frame" x="180" y="346" width="667" height="266"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsV-lT-bX0">
                                 <rect key="frame" x="180" y="684" width="667" height="330"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -214,6 +208,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TK-Hc-LYE">
+                                <rect key="frame" x="51" y="346" width="930" height="266"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -221,6 +222,7 @@
                     <connections>
                         <outlet property="lbPenalite" destination="IIH-bs-D3X" id="zDD-Lt-vti"/>
                         <outlet property="lbTimer" destination="yDc-6B-BFA" id="pBJ-3u-llG"/>
+                        <outlet property="textview" destination="5TK-Hc-LYE" id="NUG-37-tbs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

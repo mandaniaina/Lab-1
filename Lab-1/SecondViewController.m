@@ -18,6 +18,10 @@
     __weak IBOutlet UILabel *lbTimer;
     __weak IBOutlet UILabel *lbPenalite;
     int nbSecondePenalite;
+    NSInteger essaie;
+    NSString *temps;
+    NSString *classement;
+    int cpt;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -28,6 +32,9 @@
 
 - (void)viewDidLoad {
     nbSecondePenalite = 0;
+    cpt=0;
+    temps = @"Temps";
+    classement=@"Classement";
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -43,6 +50,94 @@
         [chrono invalidate], chrono = nil;
         [sender setTitle:@"Départ" forState:UIControlStateNormal];
         [self sauvegarderTemps:false];
+        
+        ///////////////////////////////////////////////////////Affichage du classement du dernier coureur
+        DataClass *obj=[DataClass getInstance];
+         NSMutableString *people=[NSMutableString string];
+        int length = 9;
+        [people appendString:@"Dossard #"];
+        for (int j=length; j<15; j++)
+        {
+            [people appendString:@" "];
+        }
+         length = 3;
+         [people appendString:@"Nom"];
+         for (int j=length; j<25; j++)
+         {
+         [people appendString:@" "];
+         }
+         
+         length = 6;
+         [people appendString:@"Prenom"];
+         for (int j=length; j<25; j++)
+         {
+         [people appendString:@" "];
+         }
+        length=4;
+         [people appendString:@"Pays"];
+        for (int j=length; j<25; j++)
+        {
+            [people appendString:@" "];
+        }
+        
+        length= temps.length;
+        [people appendString:temps];
+        for (int j=length; j<25; j++)
+        {
+            [people appendString:@" "];
+        }
+        
+        length = classement.length;
+        [people appendString:classement];
+         [people appendString:@"\n\n"];
+        
+         /*for (int i=0; i < [obj.listeParticipants count]; i++) {*/
+        Participant* p = [obj.listeParticipants objectAtIndex:cpt];
+        length = [[NSString stringWithFormat:@"%d",p.No] length];
+             [people appendString:[NSString stringWithFormat:@"%d",p.No]];
+             for (int j=length; j<15; j++)
+             {
+                 [people appendString:@" "];
+             }
+         length = [p.Nom length];
+         [people appendString:p.Nom];
+         for (int j=length; j<25; j++)
+         {
+         [people appendString:@" "];
+         }
+         
+         length = [p.Prenom length];
+         [people appendString:p.Prenom];
+         for (int j=length; j<25; j++)
+         {
+         [people appendString:@" "];
+         }
+         
+         length = [p.Pays length];
+         [people appendString:p.Pays];
+             for (int j=length; j<25; j++)
+             {
+                 [people appendString:@" "];
+             }
+             [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
+         [people appendString:@"\n"];
+        
+        /*for(int i =0;i<[obj.listeParticipants count];i++)
+        {
+            if(p.TempsCourse1)
+        }*/
+        
+        
+         //}
+         _textview.text=people;
+        if(cpt!=[obj.listeParticipants count])
+        {
+            cpt++;
+        }else
+        {
+            cpt=0;
+        }
+        ///////////////////////////////////////////////////////
     }
     
 }
@@ -117,6 +212,9 @@
     
     NSDate *currentDate = [NSDate date];
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:debutChrono];
+    
+    essaie=timeInterval;
+    
     NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     // create the date formatter
@@ -153,19 +251,20 @@
             obj.tourNo2 = true;
         }
         
-        Participant *p = obj.listeParticipants[obj.participantEnCours];
+        Participant *p = obj.listeParticipants[cpt];
         
         if(!obj.tourNo2){
             if(estDisqualifie){
                 p.TempsCourse1 = -1;
             }else{
-                p.TempsCourse1 = &(nbSecondePenalite) + tempsChrono; //ajouter le temps du chrono
+                p.TempsCourse1 =  nbSecondePenalite + (int)tempsChrono; //ajouter le temps du chrono
+                NSLog(@"%d",p.TempsCourse1);
             }
         }else{
             if(estDisqualifie){
                 p.TempsCourse2 = -1;
             }else
-                p.TempsCourse2 = &(nbSecondePenalite) + tempsChrono; //ajouter temps chrono
+                p.TempsCourse2 = (int)&(nbSecondePenalite) + (int)tempsChrono; //ajouter temps chrono
         }
         
         nbSecondePenalite = 0;
