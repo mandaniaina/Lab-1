@@ -373,7 +373,7 @@
     else{
         NSString* strPenalite = [NSString stringWithFormat:@"%02d:%02d",minutes,secondes];
         
-        [self->lbPenalite setText: [@"Pénalité:" stringByAppendingString:strPenalite]];
+        [self->lbPenalite setText: [@"+" stringByAppendingString:strPenalite]];
     }
     
     /*
