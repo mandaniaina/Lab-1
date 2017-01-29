@@ -29,6 +29,7 @@
     bool trouvePremier;
     bool trouveDeuxieme;
     bool trouveTroisieme;
+    NSData *buffer;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -47,7 +48,8 @@
     classement=@"Classement";
     trouvePremier=false;
     trouveDeuxieme=false;
-    trouveTroisieme=false;    // Do any additional setup after loading the view, typically from a nib.
+    trouveTroisieme=false;
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)timerButton:(UIButton *)sender {
@@ -403,11 +405,21 @@
         
         ////tri
         DataClass *tri;
+        tri=[DataClass getInstance];
         tri=obj.copy;
-       /*for(int i=0;i<obj.listeParticipants.count;i++)
-        {
+        
+        /*tri.listeParticipants=obj.listeParticipants.copy;*/
+        
+        
+        /*buffer = [NSKeyedArchiver archivedDataWithRootObject: obj.listeParticipants];
+        tri.listeParticipants = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];  */
+        /*tri.listeParticipants=obj.listeParticipants;*/
+        tri.listeParticipants=[[NSMutableArray alloc]init];
+       for(int i=0;i<obj.listeParticipants.count;i++)
+       {
+           
         [tri.listeParticipants addObject:[obj.listeParticipants objectAtIndex:i]];
-        }*/
+        }
         int min=0;
         int indexmin=0;
         for(int i =0;i<tri.listeParticipants.count;i++)
@@ -415,7 +427,7 @@
             min=[[tri.listeParticipants objectAtIndex:i]TempsCourse1];
             Participant* minPart=[tri.listeParticipants objectAtIndex:i];
             indexmin=i;
-            for(int j=0;i+1<obj.listeParticipants.count;j++)
+            for(int j=i+1;j<obj.listeParticipants.count;j++)
             {
                 if([[tri.listeParticipants objectAtIndex:j]TempsCourse1]<min)
                 {
@@ -508,7 +520,7 @@
                     classementActuel=cpt+1;
                 }                                                                             }
         }*/
-            [meilleurs appendString:[NSString stringWithFormat:@"#%d",classementActuel]];
+            [meilleurs appendString:[NSString stringWithFormat:@"#%d",i+1]];
             [meilleurs appendString:@"\n"];
         }
         

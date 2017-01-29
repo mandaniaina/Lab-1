@@ -29,5 +29,6 @@ static DataClass *instance = nil;
 -(id) copyWithZone: (NSZone *) zone
 {
     DataClass *classCopy = [[DataClass allocWithZone: zone] init];
+    [classCopy setListeParticipants:self.listeParticipants];
     return classCopy;
 }@end
