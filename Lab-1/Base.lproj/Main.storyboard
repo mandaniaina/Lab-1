@@ -227,6 +227,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Compétition" image="Finish Flag Filled.png" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="generalRankview" destination="zgh-cs-m6h" id="Kjw-zO-OCk"/>
                         <outlet property="lbPenalite" destination="IIH-bs-D3X" id="zDD-Lt-vti"/>
                         <outlet property="lbTimer" destination="yDc-6B-BFA" id="pBJ-3u-llG"/>
                         <outlet property="nextAthleteview" destination="IsV-lT-bX0" id="Hay-Ms-rGd"/>

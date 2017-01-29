@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DataClass : NSObject
+@interface DataClass : NSObject <NSCopying>
 {
     NSMutableArray *listeParticipants;
     int noMax;
@@ -20,4 +20,5 @@
 @property(nonatomic,readwrite)bool tourNo2;
 @property(nonatomic,retain)NSMutableArray *listeParticipants;
 +(DataClass*)getInstance;
+-(id) copyWithZone: (NSZone *) zone;
 @end

@@ -23,10 +23,17 @@
     NSString *classement;
     int cpt;
     int cpt2;
+    int first;
+    int second;
+    int third;
+    bool trouvePremier;
+    bool trouveDeuxieme;
+    bool trouveTroisieme;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
 @property (weak, nonatomic) IBOutlet UITextView *nextAthleteview;
+@property (weak, nonatomic) IBOutlet UITextView *generalRankview;
 
 @end
 
@@ -38,7 +45,9 @@
     cpt2=0;
     temps = @"Temps";
     classement=@"Classement";
-    // Do any additional setup after loading the view, typically from a nib.
+    trouvePremier=false;
+    trouveDeuxieme=false;
+    trouveTroisieme=false;    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (IBAction)timerButton:(UIButton *)sender {
@@ -352,7 +361,159 @@
         }
         ///////////////////////////////////////////////////////
         
-    }
+        ///////////////////////////////////////////////////////Affichage du classement 3 meilleur
+        //DataClass *obj=[DataClass getInstance];
+        NSMutableString *meilleurs=[NSMutableString string];
+        length = 9;
+        [meilleurs appendString:@"Dossard #"];
+        for (int j=length; j<15; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        length = 3;
+        [meilleurs appendString:@"Nom"];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        length = 6;
+        [meilleurs appendString:@"Prenom"];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        length=4;
+        [meilleurs appendString:@"Pays"];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        length= temps.length;
+        [meilleurs appendString:temps];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        length = classement.length;
+        [meilleurs appendString:classement];
+        [meilleurs appendString:@"\n\n"];
+        
+        ////tri
+        DataClass *tri;
+        tri=obj.copy;
+       /*for(int i=0;i<obj.listeParticipants.count;i++)
+        {
+        [tri.listeParticipants addObject:[obj.listeParticipants objectAtIndex:i]];
+        }*/
+        int min=0;
+        int indexmin=0;
+        for(int i =0;i<tri.listeParticipants.count;i++)
+        {
+            min=[[tri.listeParticipants objectAtIndex:i]TempsCourse1];
+            Participant* minPart=[tri.listeParticipants objectAtIndex:i];
+            indexmin=i;
+            for(int j=0;i+1<obj.listeParticipants.count;j++)
+            {
+                if([[tri.listeParticipants objectAtIndex:j]TempsCourse1]<min)
+                {
+                    minPart=[tri.listeParticipants objectAtIndex:j];
+                    indexmin=j;
+                }
+            }
+            tri.listeParticipants[indexmin]=[tri.listeParticipants objectAtIndex:i];
+            tri.listeParticipants[i]=minPart;
+        }
+        
+        ///tri
+        for (int i=0; i < 3; i++)
+        {
+            
+            
+        Participant* paa = [tri.listeParticipants objectAtIndex:i];
+        length = [[NSString stringWithFormat:@"%d",paa.No] length];
+        [meilleurs appendString:[NSString stringWithFormat:@"%d",paa.No]];
+        for (int j=length; j<15; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        length = [paa.Nom length];
+        [meilleurs appendString:paa.Nom];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        length = [paa.Prenom length];
+        [meilleurs appendString:paa.Prenom];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        length = [paa.Pays length];
+        [meilleurs appendString:paa.Pays];
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        if(!obj.tourNo2)
+        {[meilleurs appendString:[NSString stringWithFormat:@"%d secondes",paa.TempsCourse1]];
+        }
+        else{
+            [meilleurs appendString:[NSString stringWithFormat:@"%d secondes",paa.TempsCourse1+paa.TempsCourse2]];        }
+        
+        length = classement.length;
+        for (int j=length; j<25; j++)
+        {
+            [meilleurs appendString:@" "];
+        }
+        
+        /*int nbrBattue=0;
+        int classementActuel=0;
+        if(!obj.tourNo2){
+            for(int i =0;i<[obj.listeParticipants count];i++)
+            {
+                if(cpt!=0 && p.TempsCourse1< [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
+                {
+                    nbrBattue++;
+                    classementActuel=cpt-nbrBattue+1;
+                }
+                else if(cpt==0)
+                {
+                    classementActuel=1;
+                }
+                else if(nbrBattue==0&&cpt!=0)
+                {
+                    classementActuel=cpt+1;
+                }
+            }}
+        else{
+            for(int i =0;i<[obj.listeParticipants count];i++)
+            {
+                if(cpt!=0 && p.TempsCourse1+p.TempsCourse2 < [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2] && [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2]!= [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
+                {
+                    nbrBattue++;
+                    classementActuel=cpt-nbrBattue+1;
+                }
+                
+                else if(cpt==0)
+                {
+                    classementActuel=1;
+                }
+                else if(nbrBattue==0&&cpt!=0)
+                {
+                    classementActuel=cpt+1;
+                }                                                                             }
+        }*/
+            [meilleurs appendString:[NSString stringWithFormat:@"#%d",classementActuel]];
+            [meilleurs appendString:@"\n"];
+        }
+        
+        _generalRankview.text=meilleurs;
+    }//////////////////////////////////////////////////////////////
     
 }
 
