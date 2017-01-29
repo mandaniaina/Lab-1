@@ -431,17 +431,26 @@
 
 - (void) sauvegarderTemps:(bool) estDisqualifie{
     DataClass *obj=[DataClass getInstance];
+    Participant *p;
         NSDate *currentDate = [NSDate date];
         NSTimeInterval secondeChrono = [currentDate timeIntervalSinceDate:debutChrono];
         NSInteger tempsChrono = secondeChrono;
         
         
-        if(obj.participantEnCours > [obj.listeParticipants  count]){
+        if(obj.participantEnCours >= [obj.listeParticipants  count]&&obj.tourNo2==false){
             obj.participantEnCours = 0;
             obj.tourNo2 = true;
         }
-        
-        Participant *p = obj.listeParticipants[cpt];
+    if(cpt<[obj.listeParticipants count])
+    {
+        p = obj.listeParticipants[cpt];
+    }else
+    {
+        cpt=0;
+        cpt2=0;
+        p = obj.listeParticipants[cpt];
+    }
+    
         
         if(!obj.tourNo2){
             if(estDisqualifie){
@@ -459,12 +468,12 @@
         
         nbSecondePenalite = 0;
         
-        if(obj.participantEnCours > [obj.listeParticipants  count] && obj.tourNo2 == true){
+        if(obj.participantEnCours >= [obj.listeParticipants  count] && obj.tourNo2 == true){
             //ALERT fin de la compétition
             //clear données
             
             
-        }
+        }obj.participantEnCours=obj.participantEnCours+1;
 }
 
 
