@@ -440,9 +440,60 @@
         }
         
         ///tri
+        if(obj.listeParticipants.count<=2)
+        {
+            int i=0;
+            for(Participant *plp in tri.listeParticipants)
+            {
+                /*Participant* paa = [tri.listeParticipants objectAtIndex:i];*/
+                length = [[NSString stringWithFormat:@"%d",plp.No] length];
+                [meilleurs appendString:[NSString stringWithFormat:@"%d",plp.No]];
+                for (int j=length; j<15; j++)
+                {
+                    [meilleurs appendString:@" "];
+                }
+                length = [plp.Nom length];
+                [meilleurs appendString:plp.Nom];
+                for (int j=length; j<25; j++)
+                {
+                    [meilleurs appendString:@" "];
+                }
+                
+                length = [plp.Prenom length];
+                [meilleurs appendString:plp.Prenom];
+                for (int j=length; j<25; j++)
+                {
+                    [meilleurs appendString:@" "];
+                }
+                
+                length = [plp.Pays length];
+                [meilleurs appendString:plp.Pays];
+                for (int j=length; j<25; j++)
+                {
+                    [meilleurs appendString:@" "];
+                }
+                if(!obj.tourNo2)
+                {[meilleurs appendString:[NSString stringWithFormat:@"%d secondes",plp.TempsCourse1]];
+                }
+                else{
+                    [meilleurs appendString:[NSString stringWithFormat:@"%d secondes",plp.TempsCourse1+plp.TempsCourse2]];        }
+                
+                length = classement.length;
+                for (int j=length; j<25; j++)
+                {
+                    [meilleurs appendString:@" "];
+                }
+                
+
+                [meilleurs appendString:[NSString stringWithFormat:@"#%d",i+1]];
+                [meilleurs appendString:@"\n"];
+                i++;
+            }
+            
+        }else{
+        
         for (int i=0; i < 3; i++)
         {
-            
             
         Participant* paa = [tri.listeParticipants objectAtIndex:i];
         length = [[NSString stringWithFormat:@"%d",paa.No] length];
@@ -483,45 +534,9 @@
             [meilleurs appendString:@" "];
         }
         
-        /*int nbrBattue=0;
-        int classementActuel=0;
-        if(!obj.tourNo2){
-            for(int i =0;i<[obj.listeParticipants count];i++)
-            {
-                if(cpt!=0 && p.TempsCourse1< [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
-                {
-                    nbrBattue++;
-                    classementActuel=cpt-nbrBattue+1;
-                }
-                else if(cpt==0)
-                {
-                    classementActuel=1;
-                }
-                else if(nbrBattue==0&&cpt!=0)
-                {
-                    classementActuel=cpt+1;
-                }
-            }}
-        else{
-            for(int i =0;i<[obj.listeParticipants count];i++)
-            {
-                if(cpt!=0 && p.TempsCourse1+p.TempsCourse2 < [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2] && [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2]!= [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
-                {
-                    nbrBattue++;
-                    classementActuel=cpt-nbrBattue+1;
-                }
-                
-                else if(cpt==0)
-                {
-                    classementActuel=1;
-                }
-                else if(nbrBattue==0&&cpt!=0)
-                {
-                    classementActuel=cpt+1;
-                }                                                                             }
-        }*/
             [meilleurs appendString:[NSString stringWithFormat:@"#%d",i+1]];
             [meilleurs appendString:@"\n"];
+        }
         }
         
         _generalRankview.text=meilleurs;
