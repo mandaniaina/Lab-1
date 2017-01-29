@@ -22,9 +22,11 @@
     NSString *temps;
     NSString *classement;
     int cpt;
+    int cpt2;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
+@property (weak, nonatomic) IBOutlet UITextView *nextAthleteview;
 
 @end
 
@@ -33,6 +35,7 @@
 - (void)viewDidLoad {
     nbSecondePenalite = 0;
     cpt=0;
+    cpt2=0;
     temps = @"Temps";
     classement=@"Classement";
     // Do any additional setup after loading the view, typically from a nib.
@@ -157,6 +160,174 @@
             cpt=0;
         }
         ///////////////////////////////////////////////////////
+        
+        ///////////////////////////////////////////////////////Affichage du prochain coureur
+        
+        NSMutableString *nextOnes=[NSMutableString string];
+        length = 9;
+        [nextOnes appendString:@"Dossard #"];
+        for (int j=length; j<15; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        length = 3;
+        [nextOnes appendString:@"Nom"];
+        for (int j=length; j<25; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        
+        length = 6;
+        [nextOnes appendString:@"Prenom"];
+        for (int j=length; j<25; j++)
+        {
+            [people appendString:@" "];
+        }
+        length=4;
+        [nextOnes appendString:@"Pays"];
+        for (int j=length; j<25; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+
+        [nextOnes appendString:@"\n\n"];
+        
+        if(obj.listeParticipants.count==2)
+        {
+            for(int i=0; i<2;i++)
+            {
+                Participant* pp;
+                if(cpt2==1)
+                {
+                    pp = [obj.listeParticipants objectAtIndex:cpt2-i];
+                    
+                }else{
+                    pp = [obj.listeParticipants objectAtIndex:cpt2+i];
+                }
+                length = [[NSString stringWithFormat:@"%d",pp.No] length];
+                [nextOnes appendString:[NSString stringWithFormat:@"%d",pp.No]];
+                for (int j=length; j<15; j++)
+                {
+                    [nextOnes appendString:@" "];
+                }
+                length = [pp.Nom length];
+                [nextOnes appendString:pp.Nom];
+                for (int j=length; j<25; j++)
+                {
+                    [nextOnes appendString:@" "];
+                }
+                
+                length = [pp.Prenom length];
+                [nextOnes appendString:pp.Prenom];
+                for (int j=length; j<25; j++)
+                {
+                    [nextOnes appendString:@" "];
+                }
+                
+                length = [pp.Pays length];
+                [nextOnes appendString:pp.Pays];
+                for (int j=length; j<25; j++)
+                {
+                    [nextOnes appendString:@" "];
+                }
+                
+                [nextOnes appendString:@"\n"];            }
+        }else if (obj.listeParticipants.count==1)
+        {
+            Participant* pppp = [obj.listeParticipants objectAtIndex:0];
+            length = [[NSString stringWithFormat:@"%d",pppp.No] length];
+            [nextOnes appendString:[NSString stringWithFormat:@"%d",pppp.No]];
+            for (int j=length; j<15; j++)
+            {
+                [nextOnes appendString:@" "];
+            }
+            length = [pppp.Nom length];
+            [nextOnes appendString:pppp.Nom];
+            for (int j=length; j<25; j++)
+            {
+                [nextOnes appendString:@" "];
+            }
+            
+            length = [pppp.Prenom length];
+            [nextOnes appendString:pppp.Prenom];
+            for (int j=length; j<25; j++)
+            {
+                [nextOnes appendString:@" "];
+            }
+            
+            length = [pppp.Pays length];
+            [nextOnes appendString:pppp.Pays];
+            for (int j=length; j<25; j++)
+            {
+                [nextOnes appendString:@" "];
+            }
+            
+            [nextOnes appendString:@"\n"];
+        }
+        else
+        {
+        
+        for (int i=0; i < 3; i++)
+        {
+            Participant* ppp;
+            if(cpt2==obj.listeParticipants.count-2&&i==2)
+            {
+                ppp = [obj.listeParticipants objectAtIndex:0];
+            }
+            else if(cpt2==obj.listeParticipants.count-1&&i==1)
+            {
+                ppp = [obj.listeParticipants objectAtIndex:0];
+            }
+            else if(cpt2==obj.listeParticipants.count-1&&i==2)
+            {
+                ppp = [obj.listeParticipants objectAtIndex:1];
+            }
+            else
+            {
+              ppp = [obj.listeParticipants objectAtIndex:(cpt2+i)];
+            }
+            
+        length = [[NSString stringWithFormat:@"%d",ppp.No] length];
+        [nextOnes appendString:[NSString stringWithFormat:@"%d",ppp.No]];
+        for (int j=length; j<15; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        length = [ppp.Nom length];
+        [nextOnes appendString:ppp.Nom];
+        for (int j=length; j<25; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        
+        length = [ppp.Prenom length];
+        [nextOnes appendString:ppp.Prenom];
+        for (int j=length; j<25; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        
+        length = [ppp.Pays length];
+        [nextOnes appendString:ppp.Pays];
+        for (int j=length; j<25; j++)
+        {
+            [nextOnes appendString:@" "];
+        }
+        
+        [nextOnes appendString:@"\n"];
+        
+        }
+        }
+        _nextAthleteview.text=nextOnes;
+        if(cpt2!=[obj.listeParticipants count])
+        {
+            cpt2++;
+        }else
+        {
+            cpt2=0;
+        }
+        ///////////////////////////////////////////////////////
+        
     }
     
 }
