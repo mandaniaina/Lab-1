@@ -122,7 +122,12 @@
              {
                  [people appendString:@" "];
              }
-             [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
+        if(!obj.tourNo2)
+        {[people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
+        }
+        else{
+            [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1+p.TempsCourse2]];        }
+             
         length = classement.length;
         for (int j=length; j<25; j++)
         {
@@ -131,6 +136,7 @@
         
         int nbrBattue=0;
         int classementActuel=0;
+        if(!obj.tourNo2){
         for(int i =0;i<[obj.listeParticipants count];i++)
         {
             if(cpt!=0 && p.TempsCourse1< [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
@@ -146,6 +152,24 @@
             {
                 classementActuel=cpt+1;
             }
+        }}
+        else{
+            for(int i =0;i<[obj.listeParticipants count];i++)
+            {
+                if(cpt!=0 && p.TempsCourse1+p.TempsCourse2 < [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2] && [[obj.listeParticipants objectAtIndex:i]TempsCourse1]+[[obj.listeParticipants objectAtIndex:i]TempsCourse2]!= [[obj.listeParticipants objectAtIndex:i]TempsCourse1])
+            {
+                nbrBattue++;
+                classementActuel=cpt-nbrBattue+1;
+            }
+                
+                else if(cpt==0)
+                {
+                    classementActuel=1;
+                }
+                else if(nbrBattue==0&&cpt!=0)
+                {
+                    classementActuel=cpt+1;
+                }                                                                             }
         }
         [people appendString:[NSString stringWithFormat:@"#%d",classementActuel]];
         [people appendString:@"\n"];
@@ -463,7 +487,7 @@
             if(estDisqualifie){
                 p.TempsCourse2 = -1;
             }else
-                p.TempsCourse2 = (int)&(nbSecondePenalite) + (int)tempsChrono; //ajouter temps chrono
+                p.TempsCourse2 = nbSecondePenalite + (int)tempsChrono; //ajouter temps chrono
         }
         
         nbSecondePenalite = 0;
