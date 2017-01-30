@@ -492,12 +492,12 @@
             }
             
         }else{
-        
+        int compteur=0;
         for (int i=0; i < 3; i++)
         {
-            
         Participant* paa = [tri.listeParticipants objectAtIndex:i];
-        length = [[NSString stringWithFormat:@"%d",paa.No] length];
+            if((paa.TempsCourse1!=0 && !obj.tourNo2)||(paa.TempsCourse2!=0 && obj.tourNo2)){
+            length = [[NSString stringWithFormat:@"%d",paa.No] length];
         [meilleurs appendString:[NSString stringWithFormat:@"%d",paa.No]];
         for (int j=length; j<15; j++)
         {
@@ -534,9 +534,10 @@
         {
             [meilleurs appendString:@" "];
         }
-        
-            [meilleurs appendString:[NSString stringWithFormat:@"#%d",i+1]];
+                compteur++;
+            [meilleurs appendString:[NSString stringWithFormat:@"#%d",compteur]];
             [meilleurs appendString:@"\n"];
+        }else{}
         }
         }
         
