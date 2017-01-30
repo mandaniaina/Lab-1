@@ -335,24 +335,24 @@
         else
         {
         
-        for (int i=0; i < 3; i++)
+        for (int i=0; i < 2; i++)
         {
             Participant* ppp;
-            if(cpt2==obj.listeParticipants.count-2&&i==2)
+            if(cpt2==obj.listeParticipants.count-2&&i==1)
+            {
+                ppp = [obj.listeParticipants objectAtIndex:0];
+            }
+            else if(cpt2==obj.listeParticipants.count-1&&i==0)
             {
                 ppp = [obj.listeParticipants objectAtIndex:0];
             }
             else if(cpt2==obj.listeParticipants.count-1&&i==1)
             {
-                ppp = [obj.listeParticipants objectAtIndex:0];
-            }
-            else if(cpt2==obj.listeParticipants.count-1&&i==2)
-            {
                 ppp = [obj.listeParticipants objectAtIndex:1];
             }
             else
             {
-              ppp = [obj.listeParticipants objectAtIndex:(cpt2+i)];
+              ppp = [obj.listeParticipants objectAtIndex:(cpt2+1+i)];
             }
             
         length = [[NSString stringWithFormat:@"%d",ppp.No] length];
