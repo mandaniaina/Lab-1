@@ -452,6 +452,10 @@
         }
         int min=0;
         int indexmin=0;
+        
+        
+        
+        
         for(int i =0;i<tri.listeParticipants.count;i++)
         {
             min=[[tri.listeParticipants objectAtIndex:i]TempsCourse1];
@@ -575,28 +579,76 @@
         if(obj.tourNo2==true&&cpt>=obj.listeParticipants.count)
         {
             NSMutableString *medaille=[NSMutableString string];
-            if([[tri.listeParticipants objectAtIndex:0]TempsCourse1]+[[tri.listeParticipants objectAtIndex:0]TempsCourse2]==[[tri.listeParticipants objectAtIndex:1]TempsCourse1]+[[tri.listeParticipants objectAtIndex:1]TempsCourse2])
+            int cptParticipant = 0;
+            
+            for (int compteur = 0; compteur < 3; compteur++){
+                if(compteur == 0){
+                    [medaille appendString:@"OR: "];
+                }else if(compteur == 1){
+                    [medaille appendString:@"ARGENT: "];
+                }else if(compteur == 2){
+                    [medaille appendString:@"BRONZE: "];
+                }
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:cptParticipant]Prenom]];
+                [medaille appendString:@" "];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:cptParticipant]Nom]];
+                
+                cptParticipant++;
+                
+                
+                
+                while((cptParticipant < 3)){
+                    
+                    if([[tri.listeParticipants objectAtIndex:cptParticipant ]TempsCourse1]+[[tri.listeParticipants objectAtIndex:cptParticipant]TempsCourse2]==[[tri.listeParticipants objectAtIndex:cptParticipant - 1]TempsCourse1]+[[tri.listeParticipants objectAtIndex:cptParticipant - 1]TempsCourse2])
+                    {
+                        [medaille appendString:@" & "];
+                        [medaille appendString:[[tri.listeParticipants objectAtIndex:cptParticipant]Prenom]];
+                        [medaille appendString:@" "];
+                        [medaille appendString:[[tri.listeParticipants objectAtIndex:cptParticipant]Nom]];
+                        cptParticipant++;
+                    }else
+                        break;
+                    
+                }
+        
+                
+                    //si 3 participants sont rentré dans le tableau, on ne décerne plus de médaille
+                    if(cptParticipant == 3){
+                        compteur = 3;
+                    }
+                
+                     [medaille appendString:@"\n"];
+                }
+/* if([[tri.listeParticipants objectAtIndex:0]TempsCourse1]+[[tri.listeParticipants objectAtIndex:0]TempsCourse2]==[[tri.listeParticipants objectAtIndex:1]TempsCourse1]+[[tri.listeParticipants objectAtIndex:1]TempsCourse2])
             {
                 [medaille appendString:@"OR: "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Prenom]];
+                [medaille appendString:@" "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Nom]];
                 [medaille appendString:@" & "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Prenom]];
+                [medaille appendString:@" "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Nom]];
                 [medaille appendString:@"\nBRONZE: "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Prenom]];
+                [medaille appendString:@" "];
                 [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Nom]];
             }else{
             [medaille appendString:@"OR: "];
             [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Prenom]];
-            [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Nom]];            [medaille appendString:@"\nARGENT: "];
+            [medaille appendString:@" "];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Nom]];
+            [medaille appendString:@"\nARGENT: "];
             [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Prenom]];
-            [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Nom]];            [medaille appendString:@"\nBRONZE: "];
+            [medaille appendString:@" "];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Nom]];            [
+            medaille appendString:@"\nBRONZE: "];
             [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Prenom]];
+            [medaille appendString:@" "];
             [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Nom]];
-            }
+            }*/
             
-            alert=[UIAlertController alertControllerWithTitle:@"Classement Finale!" message:medaille preferredStyle:UIAlertControllerStyleAlert];
+            alert=[UIAlertController alertControllerWithTitle:@" Finale!" message:medaille preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
             
@@ -728,6 +780,8 @@
         nbSecondePenalite = 0;
         
         if(obj.participantEnCours >= [obj.listeParticipants  count] && obj.tourNo2 == true){
+            
+            
             //ALERT fin de la compétition
             //clear données
             [lbTour setText:@"Compétition terminée"];

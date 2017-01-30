@@ -97,5 +97,9 @@
     }
     _textview.text=people;
     
+    _nom.text = @"";
+    _prenom.text = @"";
+    _pays.text = @"";
+
 }
 @end
