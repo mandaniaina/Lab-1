@@ -19,6 +19,8 @@
 		E44190A91E2D52DC0004394F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44190A71E2D52DC0004394F /* Main.storyboard */; };
 		E44190AB1E2D52DC0004394F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E44190AA1E2D52DC0004394F /* Assets.xcassets */; };
 		E44190AE1E2D52DC0004394F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E44190AC1E2D52DC0004394F /* LaunchScreen.storyboard */; };
+		E47AFFF81E3FB6E200E8CBAB /* imgres.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47AFFF71E3FB6E200E8CBAB /* imgres.jpg */; };
+		E47AFFFA1E3FB78600E8CBAB /* 6961426-snowboard-winter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47AFFF91E3FB78600E8CBAB /* 6961426-snowboard-winter.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		E44190AA1E2D52DC0004394F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E44190AD1E2D52DC0004394F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E44190AF1E2D52DC0004394F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E47AFFF71E3FB6E200E8CBAB /* imgres.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = imgres.jpg; sourceTree = "<group>"; };
+		E47AFFF91E3FB78600E8CBAB /* 6961426-snowboard-winter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6961426-snowboard-winter.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 		E441909A1E2D52DC0004394F /* Lab-1 */ = {
 			isa = PBXGroup;
 			children = (
+				E47AFFF91E3FB78600E8CBAB /* 6961426-snowboard-winter.jpg */,
+				E47AFFF71E3FB6E200E8CBAB /* imgres.jpg */,
 				DCD083561E3939830070616C /* Add User Male.png */,
 				DCD083541E39397C0070616C /* Finish Flag Filled.png */,
 				DCD083521E3939750070616C /* Plus.png */,
@@ -161,12 +167,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47AFFF81E3FB6E200E8CBAB /* imgres.jpg in Resources */,
 				E44190AE1E2D52DC0004394F /* LaunchScreen.storyboard in Resources */,
 				E44190AB1E2D52DC0004394F /* Assets.xcassets in Resources */,
 				E44190A91E2D52DC0004394F /* Main.storyboard in Resources */,
 				DCD083551E39397C0070616C /* Finish Flag Filled.png in Resources */,
 				DCD083531E3939750070616C /* Plus.png in Resources */,
 				DCD083571E3939830070616C /* Add User Male.png in Resources */,
+				E47AFFFA1E3FB78600E8CBAB /* 6961426-snowboard-winter.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
