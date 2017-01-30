@@ -17,6 +17,9 @@
     NSDate *debutChrono;
     __weak IBOutlet UILabel *lbTimer;
     __weak IBOutlet UILabel *lbPenalite;
+    __weak IBOutlet UILabel *lbParticipant;
+    __weak IBOutlet UILabel *lbTour;
+    __weak IBOutlet UIButton *timerButton;
     int nbSecondePenalite;
     NSInteger essaie;
     NSString *temps;
@@ -24,6 +27,7 @@
     int cpt;
     int cpt2;
     UIAlertController *alert;
+    Participant *premier;
     /*int first;
     int second;
     int third;
@@ -47,6 +51,22 @@
     cpt2=0;
     temps = @"Temps";
     classement=@"Classement";
+    DataClass *obj=[DataClass getInstance];
+    NSMutableString *premierParticipant=[NSMutableString string];
+    if([obj.listeParticipants count]!= 0) {
+        premier = [obj.listeParticipants objectAtIndex:0];
+        [premierParticipant appendString:@"#"];
+        [premierParticipant appendString:[NSString stringWithFormat:@"%d",premier.No]];
+        [premierParticipant appendString:@" "];
+        [premierParticipant appendString:premier.Nom];
+        [premierParticipant appendString:@" "];
+        [premierParticipant appendString:premier.Prenom];
+        [premierParticipant appendString:@" , "];
+        [premierParticipant appendString:premier.Pays];
+        [lbParticipant setText:premierParticipant];
+        [lbTour setText:@"Tour #1"];
+        
+    }
     /*trouvePremier=false;
     trouveDeuxieme=false;
     trouveTroisieme=false;*/
@@ -54,20 +74,20 @@
 }
 
 - (IBAction)timerButton:(UIButton *)sender {
-    
-    if(![chrono isValid]){
+    DataClass *obj=[DataClass getInstance];
+    if(![chrono isValid] && [obj.listeParticipants count]!= 0){
         [sender setTitle:@"Arrivée" forState:UIControlStateNormal];
-        
+        [lbPenalite setText: @"+00:00"];
         debutChrono = [NSDate date];
         chrono = [NSTimer scheduledTimerWithTimeInterval:1.0/10.0 target:self selector:@selector(afficherChrono) userInfo:nil repeats:YES];
         
     }else{
+        if([obj.listeParticipants count]!= 0) {
         [chrono invalidate], chrono = nil;
         [sender setTitle:@"Départ" forState:UIControlStateNormal];
         [self sauvegarderTemps:false];
         
         ///////////////////////////////////////////////////////Affichage du classement du dernier coureur
-        DataClass *obj=[DataClass getInstance];
          NSMutableString *people=[NSMutableString string];
         int length = 9;
         [people appendString:@"Dossard #"];
@@ -106,7 +126,6 @@
         [people appendString:classement];
          [people appendString:@"\n\n"];
         
-         /*for (int i=0; i < [obj.listeParticipants count]; i++) {*/
         Participant* p = [obj.listeParticipants objectAtIndex:cpt];
         length = [[NSString stringWithFormat:@"%d",p.No] length];
              [people appendString:[NSString stringWithFormat:@"%d",p.No]];
@@ -134,11 +153,24 @@
              {
                  [people appendString:@" "];
              }
-        if(!obj.tourNo2)
-        {[people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
+        if(!obj.tourNo2){
+            if(p.estDisqualifier == true)
+            {
+                [people appendString:@"DNF"];
+            }
+            else{
+            [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1]];
+            }
         }
         else{
-            [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1+p.TempsCourse2]];        }
+            if(p.estDisqualifier == true)
+            {
+                [people appendString:@"DNF"];
+            }
+            else{
+                [people appendString:[NSString stringWithFormat:@"%d secondes",p.TempsCourse1+p.TempsCourse2]];
+            }
+        }
              
         length = classement.length;
         for (int j=length; j<25; j++)
@@ -365,7 +397,6 @@
         ///////////////////////////////////////////////////////
         
         ///////////////////////////////////////////////////////Affichage du classement 3 meilleur
-        //DataClass *obj=[DataClass getInstance];
         NSMutableString *meilleurs=[NSMutableString string];
         length = 9;
         [meilleurs appendString:@"Dossard #"];
@@ -408,8 +439,6 @@
         DataClass *tri;
         tri=[DataClass getInstance];
         tri=obj.copy;
-        
-        /*tri.listeParticipants=obj.listeParticipants.copy;*/
         
         
         /*buffer = [NSKeyedArchiver archivedDataWithRootObject: obj.listeParticipants];
@@ -576,6 +605,7 @@
             [self presentViewController:alert animated:YES completion:nil];
         }
     }
+       }
     
     //////////////////////////////////////////////////////////////
     
@@ -592,6 +622,7 @@
     if(nbSecondePenalite >= 90){
         
         [self->lbPenalite setText: @"Disqualifié"];
+        [timerButton setTitle:@"Départ" forState:UIControlStateNormal];
         [chrono invalidate], chrono = nil;
         [self sauvegarderTemps:true];
     }
@@ -600,49 +631,11 @@
         
         [self->lbPenalite setText: [@"+" stringByAppendingString:strPenalite]];
     }
-    
-    /*
-     NSMutableString *people=[NSMutableString string];
-     int length = 3;
-     [people appendString:@"Nom"];
-     for (int j=length; j<40; j++)
-     {
-     [people appendString:@" "];
-     }
-     
-     length = 6;
-     [people appendString:@"Prenom"];
-     for (int j=length; j<40; j++)
-     {
-     [people appendString:@" "];
-     }
-     [people appendString:@"Pays"];
-     [people appendString:@"\n\n"];
-     for (int i=0; i < [obj.listeParticipants count]; i++) {
-     Participant* p = [obj.listeParticipants objectAtIndex:i];
-     int length = [p.Nom length];
-     [people appendString:p.Nom];
-     for (int j=length; j<40; j++)
-     {
-     [people appendString:@" "];
-     }
-     
-     length = [p.Prenom length];
-     [people appendString:p.Prenom];
-     for (int j=length; j<40; j++)
-     {
-     [people appendString:@" "];
-     }
-     
-     length = [p.Pays length];
-     [people appendString:p.Pays];
-     [people appendString:@"\n"];
-     }
-     _textview.text=people;*/
 }
 - (IBAction)disqualifie:(id)sender {
     
     [self->lbPenalite setText: @"Disqualifié"];
+    [timerButton setTitle:@"Départ" forState:UIControlStateNormal];
     [chrono invalidate], chrono = nil;
     [self sauvegarderTemps:true];
 }
@@ -681,14 +674,27 @@
 - (void) sauvegarderTemps:(bool) estDisqualifie{
     DataClass *obj=[DataClass getInstance];
     Participant *p;
+    if([obj.listeParticipants count]!= 0) {
         NSDate *currentDate = [NSDate date];
         NSTimeInterval secondeChrono = [currentDate timeIntervalSinceDate:debutChrono];
         NSInteger tempsChrono = secondeChrono;
         
         
         if(obj.participantEnCours >= [obj.listeParticipants  count]&&obj.tourNo2==false){
+            NSMutableString *premierParticipant=[NSMutableString string];
             obj.participantEnCours = 0;
             obj.tourNo2 = true;
+            premier = [obj.listeParticipants objectAtIndex:0];
+            [premierParticipant appendString:@"#"];
+            [premierParticipant appendString:[NSString stringWithFormat:@"%d",premier.No]];
+            [premierParticipant appendString:@" "];
+            [premierParticipant appendString:premier.Nom];
+            [premierParticipant appendString:@" "];
+            [premierParticipant appendString:premier.Prenom];
+            [premierParticipant appendString:@" , "];
+            [premierParticipant appendString:premier.Pays];
+            [lbParticipant setText:premierParticipant];
+            [lbTour setText:@"Tour #2"];
         }
     if(cpt<[obj.listeParticipants count])
     {
@@ -704,13 +710,17 @@
         if(!obj.tourNo2){
             if(estDisqualifie){
                 p.TempsCourse1 = -1;
+                p.TempsCourse2 = -1;
+                p.estDisqualifier = true;
+                
             }else{
                 p.TempsCourse1 =  nbSecondePenalite + (int)tempsChrono; //ajouter le temps du chrono
-                NSLog(@"%d",p.TempsCourse1);
             }
         }else{
             if(estDisqualifie){
+                p.TempsCourse1 = -1;
                 p.TempsCourse2 = -1;
+                p.estDisqualifier = true;
             }else
                 p.TempsCourse2 = nbSecondePenalite + (int)tempsChrono; //ajouter temps chrono
         }
@@ -720,9 +730,41 @@
         if(obj.participantEnCours >= [obj.listeParticipants  count] && obj.tourNo2 == true){
             //ALERT fin de la compétition
             //clear données
+            [lbTour setText:@"Compétition terminée"];
             
-            
-        }obj.participantEnCours=obj.participantEnCours+1;
+        }
+        obj.participantEnCours=obj.participantEnCours+1;
+        if(obj.participantEnCours < [obj.listeParticipants  count])
+        {
+            NSMutableString *premierParticipant=[NSMutableString string];
+        
+            premier = [obj.listeParticipants objectAtIndex:obj.participantEnCours];
+            while(premier.estDisqualifier == true)
+            {
+                if(obj.participantEnCours >= [obj.listeParticipants  count] && obj.tourNo2 == true){
+                    [lbTour setText:@"Compétition terminée"];
+                    break;
+                }
+                obj.participantEnCours=obj.participantEnCours+1;
+                premier = [obj.listeParticipants objectAtIndex:obj.participantEnCours];
+            }
+            if (![lbTour.text isEqualToString:@"Compétition terminée"])
+            {
+                [premierParticipant appendString:@"#"];
+                [premierParticipant appendString:[NSString stringWithFormat:@"%d",premier.No]];
+                [premierParticipant appendString:@" "];
+                [premierParticipant appendString:premier.Nom];
+                [premierParticipant appendString:@" "];
+                [premierParticipant appendString:premier.Prenom];
+                [premierParticipant appendString:@" , "];
+                [premierParticipant appendString:premier.Pays];
+                [lbParticipant setText:premierParticipant];
+            }
+        }
+    
+    }
+    
+    
 }
 
 
