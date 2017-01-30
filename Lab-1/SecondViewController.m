@@ -23,13 +23,14 @@
     NSString *classement;
     int cpt;
     int cpt2;
-    int first;
+    UIAlertController *alert;
+    /*int first;
     int second;
     int third;
     bool trouvePremier;
     bool trouveDeuxieme;
-    bool trouveTroisieme;
-    NSData *buffer;
+    bool trouveTroisieme;*/
+    //NSData *buffer;
 }
 - (IBAction)debutFin:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *textview;
@@ -46,9 +47,9 @@
     cpt2=0;
     temps = @"Temps";
     classement=@"Classement";
-    trouvePremier=false;
+    /*trouvePremier=false;
     trouveDeuxieme=false;
-    trouveTroisieme=false;
+    trouveTroisieme=false;*/
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -216,7 +217,7 @@
         [nextOnes appendString:@"Prenom"];
         for (int j=length; j<25; j++)
         {
-            [people appendString:@" "];
+            [nextOnes appendString:@" "];
         }
         length=4;
         [nextOnes appendString:@"Pays"];
@@ -540,7 +541,42 @@
         }
         
         _generalRankview.text=meilleurs;
-    }//////////////////////////////////////////////////////////////
+        
+        if(obj.tourNo2==true&&cpt>=obj.listeParticipants.count)
+        {
+            NSMutableString *medaille=[NSMutableString string];
+            if([[tri.listeParticipants objectAtIndex:0]TempsCourse1]+[[tri.listeParticipants objectAtIndex:0]TempsCourse2]==[[tri.listeParticipants objectAtIndex:1]TempsCourse1]+[[tri.listeParticipants objectAtIndex:1]TempsCourse2])
+            {
+                [medaille appendString:@"OR: "];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Prenom]];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Nom]];
+                [medaille appendString:@" & "];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Prenom]];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Nom]];
+                [medaille appendString:@"\nBRONZE: "];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Prenom]];
+                [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Nom]];
+            }else{
+            [medaille appendString:@"OR: "];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Prenom]];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:0]Nom]];            [medaille appendString:@"\nARGENT: "];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Prenom]];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:1]Nom]];            [medaille appendString:@"\nBRONZE: "];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Prenom]];
+            [medaille appendString:[[tri.listeParticipants objectAtIndex:2]Nom]];
+            }
+            
+            alert=[UIAlertController alertControllerWithTitle:@"Classement Finale!" message:medaille preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }
+    
+    //////////////////////////////////////////////////////////////
     
 }
 
